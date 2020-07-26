@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-tiptap-lib": [
+        "dist/ngx-tiptap-lib/ngx-tiptap-lib",
+        "dist/ngx-tiptap-lib"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

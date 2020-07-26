@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~prosemirror-view/style/prosemirror.css";
+@import "~prosemirror-example-setup/style/style.css";
+@import "~prosemirror-menu/style/menu.css";
+
+body{
+  padding: 16px;
+}

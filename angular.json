@@ -25,9 +25,15 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +129,50 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-tiptap"
+    },
+    "ngx-tiptap-lib": {
+      "projectType": "library",
+      "root": "projects/ngx-tiptap-lib",
+      "sourceRoot": "projects/ngx-tiptap-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-tiptap-lib/tsconfig.lib.json",
+            "project": "projects/ngx-tiptap-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-tiptap-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tiptap-lib/src/test.ts",
+            "tsConfig": "projects/ngx-tiptap-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tiptap-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-tiptap-lib/tsconfig.lib.json",
+              "projects/ngx-tiptap-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-tiptap",
+  "cli": {
+    "analytics": false
+  }
 }
