@@ -10,6 +10,9 @@ import {Heading} from '../extension/node/heading.extension';
 import {TextColor} from '../extension/mark/text-color.extension';
 import {BackgroundColor} from '../extension/mark/background-color.extension';
 import {CodeBlock} from '../extension/node/code-block.extension';
+import {ListItem} from '../extension/node/list-item.extension';
+import {OrderedList} from '../extension/node/ordered-list.extension';
+import {BulletList} from '../extension/node/bullet-list.extension';
 
 @Component({
   selector: 'ngx-tiptap-editor',
@@ -54,6 +57,16 @@ import {CodeBlock} from '../extension/node/code-block.extension';
         </div>
 
 
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('ordered_list')"
+             (click)="command('ordered_list')">
+          <i nz-icon nzType="ordered-list" nzTheme="outline"></i>
+        </div>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bullet_list')"
+             (click)="command('bullet_list')">
+          <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
+        </div>
+
+
       </div>
     </div>
     <div #editorContent class="ngx-tiptap-editor-content"></div>
@@ -75,6 +88,9 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
         new History(),
         new TextColor(),
         new CodeBlock(),
+        new ListItem(),
+        new OrderedList(),
+        new BulletList(),
         new BackgroundColor(),
         new Heading({levels: [1, 2, 3]}),
       ],
