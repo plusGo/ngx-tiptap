@@ -11,6 +11,7 @@ import zh from '@angular/common/locales/zh';
 import {BallonComponent} from './ballon/ballon.component';
 import {RouterModule} from '@angular/router';
 import {BallonDemo2Component} from './ballon-demo2/ballon-demo2.component';
+import {NgxTiptapLibModule} from '../../projects/ngx-tiptap-lib/src/lib/ngx-tiptap-lib.module';
 
 registerLocaleData(zh);
 
@@ -25,6 +26,7 @@ registerLocaleData(zh);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxTiptapLibModule,
     RouterModule.forRoot([
       {path: 'ballon', component: BallonComponent},
       {path: 'ballon2', component: BallonDemo2Component},
