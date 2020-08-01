@@ -1,11 +1,10 @@
 import {Mark} from '../../model/mark';
-import {colorPlugin} from '../../plugin/color.plugin';
 import {toggleColor} from '../../command/toggle-color.command';
 
-export class TextColor extends Mark {
+export class BackgroundColor extends Mark {
 
   get name() {
-    return 'textColor';
+    return 'backgroundColor';
   }
 
   get schema() {
@@ -15,7 +14,7 @@ export class TextColor extends Mark {
       },
       parseDOM: [
         {
-          style: 'color',
+          style: 'background-color',
           getAttrs: (color) => {
             return {
               color
@@ -24,17 +23,10 @@ export class TextColor extends Mark {
         }
       ],
       toDOM(node) {
-        return ['span', {style: `color: ${node.attrs.color}`}, 0];
+        return ['span', {style: `background-color: ${node.attrs.color}`}, 0];
       }
     };
   }
-
-  get plugins() {
-    return [
-      colorPlugin,
-    ];
-  }
-
 
   commands({type}) {
     return (attr) => toggleColor(type, attr);

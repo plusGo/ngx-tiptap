@@ -8,12 +8,21 @@ import {Underline} from '../extension/mark/undeline.extension';
 import {History} from '../extension/common/History.extension';
 import {Heading} from '../extension/node/heading.extension';
 import {TextColor} from '../extension/mark/text-color.extension';
+import {BackgroundColor} from '../extension/mark/background-color.extension';
+import {CodeBlock} from '../extension/node/code-block.extension';
 
 @Component({
   selector: 'ngx-tiptap-editor',
   template: `
     <div class="ngx-tiptap-editor-toolbar">
       <div class="ngx-tiptap-editor-toolbar-menus">
+        <div class="ngx-tiptap-editor-toolbar-menu-item" (click)="command('undo')">
+          <i nz-icon nzType="undo" nzTheme="outline"></i>
+        </div>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" (click)="command('redo')">
+          <i nz-icon nzType="redo" nzTheme="outline"></i>
+        </div>
+
         <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bold')" (click)="command('bold')">
           <i nz-icon nzType="bold" nzTheme="outline"></i>
         </div>
@@ -35,9 +44,13 @@ import {TextColor} from '../extension/mark/text-color.extension';
           h1
         </div>
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('heading',{level:1})"
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textColor',{color:'red'})"
              (click)="command('textColor',{color:'red'})">
           red
+        </div>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('backgroundColor',{color:'yellow'})"
+             (click)="command('backgroundColor',{color:'yellow'})">
+          yellow
         </div>
 
 
@@ -61,6 +74,8 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
         new Underline(),
         new History(),
         new TextColor(),
+        new CodeBlock(),
+        new BackgroundColor(),
         new Heading({levels: [1, 2, 3]}),
       ],
       content: `

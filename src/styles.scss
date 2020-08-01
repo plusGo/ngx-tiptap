@@ -92,6 +92,10 @@ $color-grey: #dddddd;
         cursor: pointer;
         border-radius: 2px;
 
+        i {
+          font-size: 16px;
+        }
+
         &:hover, &.active {
           background-color: #e0e0e0;
         }

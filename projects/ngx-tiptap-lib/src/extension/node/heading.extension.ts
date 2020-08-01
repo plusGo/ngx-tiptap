@@ -35,7 +35,6 @@ export class Heading extends Node {
 
   commands({type, schema}) {
     return attrs => {
-      debugger
       return toggleBlockType(type, schema.nodes.paragraph, attrs);
     };
   }

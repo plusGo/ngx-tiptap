@@ -11,7 +11,7 @@ export const toggleColor = (markType, attrs?) => {
     const {schema, selection, tr} = state;
     const {$from, $to} = selection;
 
-    if (activeColorMarks.textColor && activeColorMarks.textColor.attrs.color === attrs.color) {
+    if (activeColorMarks[markType.name] && activeColorMarks[markType.name].attrs.color === attrs.color) {
       tr.removeMark($from.pos, $to.pos, markType).removeStoredMark(markType);
     } else {
       const colorMark = markType.create({color: attrs.color});
