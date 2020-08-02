@@ -14,6 +14,7 @@ import {ListItem} from '../extension/node/list-item.extension';
 import {OrderedList} from '../extension/node/ordered-list.extension';
 import {BulletList} from '../extension/node/bullet-list.extension';
 import {TextAlign} from '../extension/mark/text-align.extension';
+import {Blockquote} from '../extension/node/blockquote.extension';
 
 @Component({
   selector: 'ngx-tiptap-editor',
@@ -51,6 +52,11 @@ import {TextAlign} from '../extension/mark/text-align.extension';
           h1
         </div>
 
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('paragraph')"
+             (click)="command('paragraph')">
+          <i nz-icon nzType="edit" nzTheme="outline"></i>
+        </div>
+
         <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textColor',{color:'red'})"
              (click)="command('textColor',{color:'red'})">
           red
@@ -77,20 +83,20 @@ import {TextAlign} from '../extension/mark/text-align.extension';
         <div class="ngx-tiptap-editor-toolbar-menu-divider"></div>
 
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item"  [class.active]="isActive('textAlign',{textAlign:'left'})"
-             (click)="command('textAlign',{textAlign:'left'})">
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('paragraph',{align:'left'})"
+             (click)="command('paragraph',{align:'left'})">
           <i class="iconfont icon-left"></i>
         </div>
 
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item"  [class.active]="isActive('textAlign',{textAlign:'center'})"
-             (click)="command('textAlign',{textAlign:'center'})">
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('paragraph',{align:'center'})"
+             (click)="command('paragraph',{align:'center'})">
           <i class="iconfont icon-center"></i>
         </div>
 
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textAlign',{textAlign:'right'})"
-             (click)="command('textAlign',{textAlign:'right'})">
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('paragraph',{align:'right'})"
+             (click)="command('paragraph',{align:'right'})">
           <i class="iconfont icon-right"></i>
         </div>
       </div>
@@ -109,6 +115,7 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
         new HardBreak(),
         new Bold(),
         new Italic(),
+        new Blockquote(),
         new Strike(),
         new Underline(),
         new History(),
@@ -118,7 +125,6 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
         new OrderedList(),
         new BulletList(),
         new BackgroundColor(),
-        new TextAlign(),
         new Heading({levels: [1, 2, 3]}),
       ],
       content: `

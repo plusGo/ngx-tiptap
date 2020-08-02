@@ -42,7 +42,10 @@ export class TextAlign extends Mark {
   }
 
   commands({type}) {
-    return (attr) => toggleTextAlign(type, attr);
+    return (attr) => {
+      debugger
+      return toggleTextAlign(type, attr);
+    };
   }
 
 }
