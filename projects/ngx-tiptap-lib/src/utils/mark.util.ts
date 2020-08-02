@@ -63,7 +63,6 @@ export default function markIsActive(state, type, attr?) {
   if (empty) {
     return !!type.isInSet(state.storedMarks || $from.marks());
   }
-
   return !!state.doc.rangeHasMark(from, to, type);
 }
 

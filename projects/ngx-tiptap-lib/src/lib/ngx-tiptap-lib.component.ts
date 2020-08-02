@@ -13,6 +13,7 @@ import {CodeBlock} from '../extension/node/code-block.extension';
 import {ListItem} from '../extension/node/list-item.extension';
 import {OrderedList} from '../extension/node/ordered-list.extension';
 import {BulletList} from '../extension/node/bullet-list.extension';
+import {TextAlign} from '../extension/mark/text-align.extension';
 
 @Component({
   selector: 'ngx-tiptap-editor',
@@ -20,26 +21,29 @@ import {BulletList} from '../extension/node/bullet-list.extension';
     <div class="ngx-tiptap-editor-toolbar">
       <div class="ngx-tiptap-editor-toolbar-menus">
         <div class="ngx-tiptap-editor-toolbar-menu-item" (click)="command('undo')">
-          <i nz-icon nzType="undo" nzTheme="outline"></i>
+          <i class="iconfont icon-revocation"></i>
         </div>
         <div class="ngx-tiptap-editor-toolbar-menu-item" (click)="command('redo')">
-          <i nz-icon nzType="redo" nzTheme="outline"></i>
+          <i class="iconfont icon-redo"></i>
         </div>
 
         <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bold')" (click)="command('bold')">
-          <i nz-icon nzType="bold" nzTheme="outline"></i>
+          <i class="iconfont icon-bold"></i>
         </div>
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('italic')" (click)="command('italic')">
-          <i nz-icon nzType="italic" nzTheme="outline"></i>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('italic')"
+             (click)="command('italic')">
+          <i class="iconfont icon-Italic"></i>
         </div>
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('strike')" (click)="command('strike')">
-          <i nz-icon nzType="strikethrough" nzTheme="outline"></i>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('strike')"
+             (click)="command('strike')">
+          <i class="iconfont icon-strike"></i>
         </div>
 
-        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('underline')" (click)="command('underline')">
-          <i nz-icon nzType="underline" nzTheme="outline"></i>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('underline')"
+             (click)="command('underline')">
+          <i class="iconfont icon-underline"></i>
         </div>
 
         <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('heading',{level:1})"
@@ -50,6 +54,10 @@ import {BulletList} from '../extension/node/bullet-list.extension';
         <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textColor',{color:'red'})"
              (click)="command('textColor',{color:'red'})">
           red
+        </div>
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textColor',{color:'blue'})"
+             (click)="command('textColor',{color:'blue'})">
+          blue
         </div>
         <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('backgroundColor',{color:'yellow'})"
              (click)="command('backgroundColor',{color:'yellow'})">
@@ -66,7 +74,23 @@ import {BulletList} from '../extension/node/bullet-list.extension';
           <i nz-icon nzType="unordered-list" nzTheme="outline"></i>
         </div>
 
+        <div class="ngx-tiptap-editor-toolbar-menu-divider"></div>
 
+
+<!--        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bold')" (click)="command('bold')">-->
+<!--          <i class="iconfont icon-left"></i>-->
+<!--        </div>-->
+
+
+<!--        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bold')" (click)="command('bold')">-->
+<!--          <i class="iconfont icon-center"></i>-->
+<!--        </div>-->
+
+
+<!--        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textAlign',{textAlign:'right'})"-->
+<!--             (click)="command('textAlign',{textAlign:'right'})">-->
+<!--          <i class="iconfont icon-right"></i>-->
+<!--        </div>-->
       </div>
     </div>
     <div #editorContent class="ngx-tiptap-editor-content"></div>
@@ -92,6 +116,7 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
         new OrderedList(),
         new BulletList(),
         new BackgroundColor(),
+        // new TextAlign(),
         new Heading({levels: [1, 2, 3]}),
       ],
       content: `
