@@ -1,16 +1,16 @@
 export const toggleTextAlign = (markType, attrs?) => {
   return (state, dispatch, view) => {
-    // const {schema, selection} = state;
-    // const tr = setTextAlign(state.tr.setSelection(selection), schema, attrs.textAlign);
-    // if (tr.docChanged) {
-    //   if (dispatch) {
-    //     dispatch(tr);
-    //   }
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-    return false
+    const {schema, selection} = state;
+    const tr = setTextAlign(state.tr.setSelection(selection), schema, attrs.textAlign);
+    debugger
+    if (tr.docChanged) {
+      if (dispatch) {
+        dispatch(tr);
+      }
+      return true;
+    } else {
+      return false;
+    }
   };
 };
 

@@ -77,20 +77,22 @@ import {TextAlign} from '../extension/mark/text-align.extension';
         <div class="ngx-tiptap-editor-toolbar-menu-divider"></div>
 
 
-<!--        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bold')" (click)="command('bold')">-->
-<!--          <i class="iconfont icon-left"></i>-->
-<!--        </div>-->
+        <div class="ngx-tiptap-editor-toolbar-menu-item"  [class.active]="isActive('textAlign',{textAlign:'left'})"
+             (click)="command('textAlign',{textAlign:'left'})">
+          <i class="iconfont icon-left"></i>
+        </div>
 
 
-<!--        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('bold')" (click)="command('bold')">-->
-<!--          <i class="iconfont icon-center"></i>-->
-<!--        </div>-->
+        <div class="ngx-tiptap-editor-toolbar-menu-item"  [class.active]="isActive('textAlign',{textAlign:'center'})"
+             (click)="command('textAlign',{textAlign:'center'})">
+          <i class="iconfont icon-center"></i>
+        </div>
 
 
-<!--        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textAlign',{textAlign:'right'})"-->
-<!--             (click)="command('textAlign',{textAlign:'right'})">-->
-<!--          <i class="iconfont icon-right"></i>-->
-<!--        </div>-->
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('textAlign',{textAlign:'right'})"
+             (click)="command('textAlign',{textAlign:'right'})">
+          <i class="iconfont icon-right"></i>
+        </div>
       </div>
     </div>
     <div #editorContent class="ngx-tiptap-editor-content"></div>
@@ -116,7 +118,7 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
         new OrderedList(),
         new BulletList(),
         new BackgroundColor(),
-        // new TextAlign(),
+        new TextAlign(),
         new Heading({levels: [1, 2, 3]}),
       ],
       content: `

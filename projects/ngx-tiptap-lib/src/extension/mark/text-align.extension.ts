@@ -1,6 +1,7 @@
 import {Mark} from '../../model/mark';
 import {toggleTextAlign} from '../../command/toggle-text-align.command';
 
+
 export class TextAlign extends Mark {
 
   get name() {
@@ -16,19 +17,22 @@ export class TextAlign extends Mark {
   get schema() {
     return {
       attrs: {
-        textAlign: ''
+        align: ''
       },
       parseDOM: [
         {
-          tag: 'p',
-          getAttrs: node => {
-            return node.style.textAlign;
+          style: 'text-align',
+          getAttrs: align => {
+            debugger
+            return {
+              align
+            };
           }
         }
       ],
       toDOM: (node) => {
         debugger
-        return ['p', {style: `text-align:${node.attrs.textAlign}`}]
+        return ['p', {style: `text-align:${node.attrs.align}`}];
       },
     };
   }

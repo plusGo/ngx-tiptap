@@ -29,7 +29,9 @@ export class Heading extends Node {
           tag: `h${level}`,
           attrs: {level},
         })),
-      toDOM: node => [`h${node.attrs.level}`, 0],
+      toDOM: node => {
+        return [`h${node.attrs.level}`, 0];
+      },
     };
   }
 

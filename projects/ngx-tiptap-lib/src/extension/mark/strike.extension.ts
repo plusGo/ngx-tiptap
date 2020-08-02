@@ -24,7 +24,10 @@ export class Strike extends Mark {
           getAttrs: value => value === 'line-through',
         },
       ],
-      toDOM: () => ['s', 0],
+      toDOM: () => {
+        debugger
+        return ['s', 0];
+      },
     };
   }
 
