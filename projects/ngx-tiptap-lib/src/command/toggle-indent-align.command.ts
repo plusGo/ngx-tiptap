@@ -1,8 +1,8 @@
-export const toggleTextAlign = (align) => {
+export const toggleTextIndent = (indent) => {
   return (state, dispatch) => {
     const {schema, selection} = state;
 
-    const tr = setTextAlign(state.tr.setSelection(selection), schema, align);
+    const tr = setTextIndent(state.tr.setSelection(selection), schema, indent);
     if (tr.docChanged) {
       if (dispatch) {
         dispatch(tr);
@@ -14,9 +14,10 @@ export const toggleTextAlign = (align) => {
   };
 };
 
-export function setTextAlign(
+export function setTextIndent(
   tr,
-  schema, align) {
+  schema,
+  indent) {
   const {selection, doc} = tr;
   if (!selection || !doc) {
     return tr;
@@ -33,6 +34,7 @@ export function setTextAlign(
   const allowedNodeTypes = new Set([heading, paragraph]);
   doc.nodesBetween(from, to, (node, pos, parentNode) => {
     const nodeType = node.type;
+    debugger
     if (allowedNodeTypes.has(nodeType)) {
       tasks.push({
         node,
@@ -50,9 +52,10 @@ export function setTextAlign(
   tasks.forEach(job => {
     const {node, pos, nodeType} = job;
     let {attrs} = node;
+    debugger
     attrs = {
       ...attrs,
-      align
+      indent: indent
     };
     tr = tr.setNodeMarkup(pos, nodeType, attrs, node.marks);
   });

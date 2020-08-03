@@ -98,6 +98,16 @@ import {Blockquote} from '../extension/node/blockquote.extension';
              (click)="command('paragraph',{align:'right'})">
           <i class="iconfont icon-right"></i>
         </div>
+
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('paragraph',{indent:'1'})"
+             (click)="command('paragraph',{indent:'1'})">
+          <i class="iconfont icon-leftindent"></i>
+        </div>
+
+        <div class="ngx-tiptap-editor-toolbar-menu-item" [class.active]="isActive('paragraph',{indent:'1'})"
+             (click)="command('paragraph',{indent:'1'})">
+          <i class="iconfont icon-rightindent"></i>
+        </div>
       </div>
     </div>
     <div #editorContent class="ngx-tiptap-editor-content"></div>
@@ -130,7 +140,7 @@ export class NgxTiptapLibComponent implements OnInit, AfterViewInit, OnDestroy {
           <h2>
             Hi there,
           </h2>
-          <p>
+          <p style="padding-left: 4em">
             this is a very <em>basic</em> example of tiptap.
           </p>
           <pre><code>body { display: none; }</code></pre>
