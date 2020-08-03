@@ -13,7 +13,6 @@ import {CodeBlock} from '../extension/node/code-block.extension';
 import {ListItem} from '../extension/node/list-item.extension';
 import {OrderedList} from '../extension/node/ordered-list.extension';
 import {BulletList} from '../extension/node/bullet-list.extension';
-import {TextAlign} from '../extension/mark/text-align.extension';
 import {Blockquote} from '../extension/node/blockquote.extension';
 
 @Component({

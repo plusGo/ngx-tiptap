@@ -25,15 +25,12 @@ export function setTextAlign(
   const {nodes} = schema;
 
 
-  const blockquote = nodes.blockquote;
-  const listItem = nodes.list_item;
   const heading = nodes.heading;
   const paragraph = nodes.paragraph;
 
   const tasks = [];
 
-  const allowedNodeTypes = new Set([blockquote, heading, listItem, paragraph]);
-
+  const allowedNodeTypes = new Set([heading, paragraph]);
   doc.nodesBetween(from, to, (node, pos, parentNode) => {
     const nodeType = node.type;
     if (allowedNodeTypes.has(nodeType)) {
@@ -56,11 +53,13 @@ export function setTextAlign(
     attrs = {
       ...attrs,
       align,
+      indent: 1
     };
     tr = tr.setNodeMarkup(pos, nodeType, attrs, node.marks);
   });
 
   return tr;
 }
+
 
 
